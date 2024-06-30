@@ -3,16 +3,16 @@
 #include<QString>
 #include"datamanager.h"
 
-class Parse
+class PackageGzParse
 {
 public:
-    Parse();
+    PackageGzParse();
     void process();
     void parseData(QString content);
     void match(QString content,QString reg,QString& package);
     QString fileName;
     void setFileName(QString fileName);
-    ~Parse();
+    ~PackageGzParse();
 };
 
 #endif // PARSE_H

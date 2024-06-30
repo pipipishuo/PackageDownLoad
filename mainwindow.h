@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include"parse.h"
+#include"PackageParse.h"
 #include"downloadfile.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,10 +15,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    Parse* p;
+    PackageGzParse* p;
     DownLoadFile* dl;
     QString debName;
     void clearPackage();
+    QStringList urls;
+    QString sourceList;
+    QString CPUArchitercture;
+    int next=0;
 public slots:
     void sltDebDownloadFinish();
     void sltPackageDownloadFinish();

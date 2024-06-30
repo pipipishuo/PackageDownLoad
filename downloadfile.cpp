@@ -61,14 +61,17 @@ void DownLoadFile::httpFinished()
     if(decompress){
         decompress_GzipFile(filename.toStdString());
         emit sig_finish();
-    }
-    if(urls.count()>0){
-        QString url=urls.front();
-        urls.pop_front();
-        download(url,false);
     }else{
-        emit download_finish();
+        if(urls.count()>0){
+            QString url=urls.front();
+            urls.pop_front();
+            download(url,false);
+        }else{
+            emit download_finish();
+        }
     }
+
+
 }
 //更新进度条
 void DownLoadFile::updateDataReadProgress(qint64 byteRead,qint64 totalBytes)
@@ -158,5 +161,6 @@ int DownLoadFile::decompress_GzipFile(const std::string& gzipFilePath ) {
 void DownLoadFile::downloadDeb(QStringList urls)
 {
     this->urls=urls;
-
+    decompress=false;
+    download(urls.at(0),false);
 }

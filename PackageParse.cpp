@@ -1,15 +1,15 @@
-#include "parse.h"
+#include "PackageParse.h"
 #include"datamanager.h"
 #include <QFile>
 #include<QTextStream>
 #include<QDebug>
 #include <QRegularExpressionMatch>
-Parse::Parse()
+PackageGzParse::PackageGzParse()
 {
 
 }
 
-void Parse::process()
+void PackageGzParse::process()
 {
 
     QFile file(fileName);
@@ -31,7 +31,7 @@ void Parse::process()
     }
 }
 
-void Parse::parseData(QString content)
+void PackageGzParse::parseData(QString content)
 {
     struct PackageData pd;
     match(content,("(Package: )(.*)"),pd.Package);
@@ -60,7 +60,7 @@ void Parse::parseData(QString content)
     //qDebug()<<pd.Package;
 }
 
-void Parse::match(QString content,QString reg, QString& field)
+void PackageGzParse::match(QString content,QString reg, QString& field)
 {
     QRegularExpression re;
     re.setPattern(reg);
@@ -71,12 +71,12 @@ void Parse::match(QString content,QString reg, QString& field)
     }
 }
 
-void Parse::setFileName(QString fileName)
+void PackageGzParse::setFileName(QString fileName)
 {
     this->fileName=fileName;
 }
 
-Parse::~Parse()
+PackageGzParse::~PackageGzParse()
 {
 
 }

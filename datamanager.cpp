@@ -61,7 +61,8 @@ QStringList DataManager::getUrls()
     for(int i=0;i<debNames.count();i++){
         QString name=debNames.at(i);
         PackageData pk=datas.value(name);
-        QString url="http://archive.kylinos.cn/kylin/KYLIN-ALL/"+pk.Filename;
+        QString url=uri+"/"+pk.Filename;
+
         urls.append(url);
     }
     return urls;

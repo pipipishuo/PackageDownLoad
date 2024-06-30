@@ -39,6 +39,8 @@ public:
     void addData(PackageData pd);
     QStringList getUrls();
     void setDebName(QString name){debName=name;};
+    void setUri(QString uri){this->uri=uri;}
+    QString uri;
     ~DataManager();
 };
 
